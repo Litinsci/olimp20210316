@@ -1,0 +1,59 @@
+extends layout
+block head
+  link(rel='stylesheet', href='/assets/style.css')
+  link(rel="stylesheet", href="/assets/vendor.css")
+block content
+  .autorez
+    .row.mt-5.login
+        .col-md-4
+        form.login-form.col-md-4
+            .mb-12.row
+                label.col-sm-2.col-form-label(for='login') Логин
+            .col-sm-12
+                input#login.form-control(type='email' name="login" placeholder="e-mail" autocomplete="off" )
+
+            .mb-12.row
+                label.col-sm-2.col-form-label(for='lastName') Фамилия
+            .col-sm-12
+                input#lastName.form-control(type='text' name="lastName" placeholder="Фамилия" autocomplete="off" )
+
+            .mb-12.row
+                label.col-sm-2.col-form-label(for='firstName') Имя
+            .col-sm-12
+                input#firstName.form-control(type='text' name="firstName" placeholder="Имя" autocomplete="off" )
+
+            .mb-12.row
+                label.col-sm-2.col-form-label(for='patronymic') Фамилия
+            .col-sm-12
+                input#patronymic.form-control(type='text' name="patronymic" placeholder="Фамилия" autocomplete="off" )
+
+            .mb-12.row
+                label.col-sm-2.col-form-label(for='password') Пароль
+            .col-sm-12
+                input#password.form-control(type='password' name="password" placeholder="Ваш пароль" )
+            .mb-12.row
+                label.col-sm-4.col-form-label(for='re-password') Повторите пароль
+            .col-sm-12
+                input#re-password.form-control(type='password' name="re-password" placeholder="Повторите пароль" )
+            button.btn.btn-outline-primary.btnLogin.col-sm-12.mt-3(type='submit' name="btnLogin") Зарегистрироваться
+            button.btn.btn-outline-primary.btnEnterOne.col-sm-12.mt-3(type='submit' name="btnEnterOne") Войти
+
+    .row.mt-5.enter
+        .col-md-4
+        form.enter-form.col-md-4
+            .mb-12.row
+                label.col-sm-2.col-form-label(for='login') Логин
+            .col-sm-12
+                input#login.form-control(type='email' name="login" placeholder="e-mail" autocomplete="off" )
+
+            .mb-12.row
+                label.col-sm-2.col-form-label(for='password') Пароль
+            .col-sm-12
+                input#password.form-control(type='password' name="password" placeholder="Ваш пароль" )
+            button.btn.btn-outline-primary.btnLoginOne.col-sm-12.mt-3(type='submit' name="btnLoginOne") Зарегистрироваться
+            button.btn.btn-outline-primary.btnEnter.col-sm-12.mt-3(type='submit' name="btnEnter") Войти
+      
+
+block footer
+      script(src="/assets/vendor.js")
+      script(src="/assets/app.js")

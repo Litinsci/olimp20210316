@@ -1,0 +1,7 @@
+.enter{
+    display: none;
+
+    &_active{
+        display: flex;
+    }
+}

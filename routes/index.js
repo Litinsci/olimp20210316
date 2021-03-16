@@ -32,6 +32,7 @@ router.post('/login', async function(req, res, next) {
 
   if (user && password == user.password) {
     req.session.nameUser = "user";
+    req.session.mail = mail;
     res.status(200).end();
 } else {
     res.status(400).end();

@@ -3,7 +3,8 @@ block head
   link(rel='stylesheet', href='/assets/style.css')
   link(rel="stylesheet", href="/assets/vendor.css")
 block content
-  h1 главная
+  header 
+    h3 #{userInfo[0].name}
 
 block footer
       script(src="/assets/vendor.js")

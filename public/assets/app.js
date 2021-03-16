@@ -17,28 +17,42 @@ document.querySelectorAll(".autorez").forEach(function (form) {
     };
 
     login.querySelector(".btnLogin").onclick = function (event) {
-      event.preventDefault(); // let sendData = {
-      //     login:login.
-      // };
-      // console.log(formData);
-      // fetch("/login", {
-      //     method: "POST",
-      //     body: formData,
-      // }).then(res => {
-      //     if (res.status == 200) {
-      //         alert("Операция завершина успешно");
-      //         document.location.reload();
-      //     } else {
-      //         alert("Что-то пошло не так");
-      //         document.location.reload();
-      //     }
-      // });
-
+      event.preventDefault();
       login.querySelectorAll(".login-form").forEach(function (loginForm) {
-        var formData = {
-          mail: loginForm.login.value
-        };
-        console.log(formData);
+        var pas;
+
+        if (loginForm.password.value == loginForm.repassword.value) {
+          pas = loginForm.password.value;
+          var formData = {
+            mail: loginForm.login.value,
+            lastName: loginForm.lastName.value,
+            firstName: loginForm.firstName.value,
+            patronymic: loginForm.patronymic.value,
+            password: pas,
+            telephone: loginForm.telephone.value,
+            series: loginForm.series.value,
+            number: loginForm.number.value
+          };
+          fetch("/regis", {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(formData)
+          }).then(function (res) {
+            if (res.status == 200) {
+              alert("Операция завершина успешно");
+              document.location.href = '/index';
+            } else {
+              alert("Что-то пошло не так");
+              document.location.reload();
+            }
+          });
+        } else {
+          alert("пароли не совподают!");
+          location.reload();
+          return;
+        }
       });
     };
   });
@@ -50,8 +64,29 @@ document.querySelectorAll(".autorez").forEach(function (form) {
     };
 
     login.querySelector(".btnEnter").onclick = function (event) {
-      event.preventDefault();
-      alert(1);
+      event.preventDefault(); // alert(1);
+
+      login.querySelectorAll(".enter-form").forEach(function (enterForm) {
+        var formData = {
+          mail: enterForm.login.value,
+          password: enterForm.password.value
+        };
+        fetch("/login", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify(formData)
+        }).then(function (res) {
+          if (res.status == 200) {
+            alert("Операция завершина успешно");
+            document.location.href = '/index';
+          } else {
+            alert("Что-то пошло не так");
+            document.location.reload();
+          }
+        });
+      });
     };
   });
 });

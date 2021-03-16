@@ -32,7 +32,7 @@ app.use(session({
 
 app.use('/', indexRouter);
 app.use('/index',isAutorez, usersLogin);
-
+// app.use('/index', usersLogin);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

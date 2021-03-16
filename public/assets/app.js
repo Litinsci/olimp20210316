@@ -27,8 +27,11 @@ document.querySelectorAll(".kredit").forEach(function (form) {
     }).then(function (res) {
       if (JSON.stringify(res.status) == 200) {
         alert("\u0432\u0430\u0448 \u0435\u0436\u0435\u043C\u0435\u0441\u0435\u0447\u043D\u044B\u0439 \u043F\u043B\u0430\u0442\u0451\u0436 \u0431\u0443\u0434\u0435\u0442 = ".concat(JSON.stringify(res.plat), " \u0440")); // document.location.href = '/index'
+
+        document.location.reload();
       } else {
-        alert("Что-то пошло не так"); // document.location.reload();
+        alert("Что-то пошло не так");
+        document.location.reload();
       }
     }); // console.log(formData);
   }; // console.log(formData);

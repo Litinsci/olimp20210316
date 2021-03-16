@@ -9942,6 +9942,13 @@ h3 {
   display: flex;
 }
 
+.kredit {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+
 * {
   margin: 0;
   padding: 0;

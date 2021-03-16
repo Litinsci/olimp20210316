@@ -20,10 +20,11 @@ document.querySelectorAll(".kredit").forEach(form => {
             if (JSON.stringify(res.status) == 200) {
                 alert(`ваш ежемесечный платёж будет = ${JSON.stringify(res.plat)} р`);
                 // document.location.href = '/index'
+                document.location.reload();
 
             } else {
                 alert("Что-то пошло не так");
-                // document.location.reload();
+                document.location.reload();
             }
         });
         // console.log(formData);

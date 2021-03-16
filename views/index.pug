@@ -9,7 +9,7 @@ block content
       h3 информация о кредите
       input(type="text" name="cred" placeholder="сумма кредита")
       input(type="text" name="sroc" placeholder="срок кредитования")
-      input(type="text" placeholder="ваша заработная плата")
+      input(type="text" name="zp" placeholder="ваша заработная плата")
       select(size='1' name='vidKredit')
         option(value='на авто') на авто
         option(selected='' value='на отдых') на отдых
@@ -19,7 +19,7 @@ block content
       h3 персональные данные
 
       input(type="text" placeholder="ФИО" value=`${userInfo[0].name} ${userInfo[0].surname} ${userInfo[0].patronymic}`)
-      input(type="text" placeholder="e-mail" value=`${userInfo[0].email}`)
+      input(type="text" name="email" placeholder="e-mail" value=`${userInfo[0].email}`)
       input(type="text" placeholder="номер телефона" value=`${userInfo[0].telephone}`)
       input(type="date" placeholder="дата рождения")
 
@@ -55,6 +55,7 @@ block content
 
       input#sogl(type="checkbox", name="sogl")
       input.btn(type="button", name="btn" value="расчитать")
+      a(href=`/index/user${userInfo[0].email}`) узнать
 block footer
       script(src="/assets/vendor.js")
       script(src="/assets/app.js")

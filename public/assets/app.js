@@ -14,7 +14,9 @@ document.querySelectorAll(".kredit").forEach(function (form) {
     var formData = {
       cred: form.cred.value,
       sroc: form.sroc.value,
-      aim: form.vidKredit.value
+      aim: form.vidKredit.value,
+      email: form.email.value,
+      zp: form.zp.value
     };
     fetch("/index/calc", {
       method: "POST",
@@ -26,9 +28,24 @@ document.querySelectorAll(".kredit").forEach(function (form) {
       return response.json();
     }).then(function (res) {
       if (JSON.stringify(res.status) == 200) {
-        alert("\u0432\u0430\u0448 \u0435\u0436\u0435\u043C\u0435\u0441\u0435\u0447\u043D\u044B\u0439 \u043F\u043B\u0430\u0442\u0451\u0436 \u0431\u0443\u0434\u0435\u0442 = ".concat(JSON.stringify(res.plat), " \u0440")); // document.location.href = '/index'
+        alert("\u0432\u0430\u0448 \u0435\u0436\u0435\u043C\u0435\u0441\u0435\u0447\u043D\u044B\u0439 \u043F\u043B\u0430\u0442\u0451\u0436 \u0431\u0443\u0434\u0435\u0442 = ".concat(JSON.stringify(res.plat), " \u0440")); // document.location.href = '/index/user';
 
-        document.location.reload();
+        fetch("/index/user", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify({
+            email: form.email.value,
+            aim: form.vidKredit.value,
+            sroc: form.sroc.value,
+            cred: form.cred.value
+          })
+        }).then(function (response) {
+          return response.json();
+        }).then(function (res) {
+          document.location.href = "/index/user".concat(form.email.value);
+        }); // document.location.reload();
       } else {
         alert("Что-то пошло не так");
         document.location.reload();

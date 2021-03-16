@@ -1,0 +1,13 @@
+extends layout
+block head
+  link(rel='stylesheet', href='/assets/style.css')
+  link(rel="stylesheet", href="/assets/vendor.css")
+block content
+
+
+    
+    
+    if (userInfo[0].status == 0)
+        h2.green Вам не одобрили кредит
+    else
+        h2.red Вам одобрили кредит

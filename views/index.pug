@@ -4,8 +4,57 @@ block head
   link(rel="stylesheet", href="/assets/vendor.css")
 block content
   header 
-    h3 #{userInfo[0].name}
+    h3 #{userInfo[0].name} #{userInfo[0].surname} #{userInfo[0].patronymic}
+    form.kredit
+      h3 информация о кредите
+      input(type="text" name="cred" placeholder="сумма кредита")
+      input(type="text" name="sroc" placeholder="срок кредитования")
+      input(type="text" placeholder="ваша заработная плата")
+      select(size='1' name='vidKredit')
+        option(value='на авто') на авто
+        option(selected='' value='на отдых') на отдых
+        option(value='На жильё') На жильё
+        option(value='потребительский') потребительский
 
+      h3 персональные данные
+
+      input(type="text" placeholder="ФИО" value=`${userInfo[0].name} ${userInfo[0].surname} ${userInfo[0].patronymic}`)
+      input(type="text" placeholder="e-mail" value=`${userInfo[0].email}`)
+      input(type="text" placeholder="номер телефона" value=`${userInfo[0].telephone}`)
+      input(type="date" placeholder="дата рождения")
+
+      h3 место жительства
+
+      input(type="text" placeholder="Город")
+      input(type="text" placeholder="Улица")
+      input(type="text" placeholder="Дом")
+      input(type="text" placeholder="Квартира")
+
+      h3 паспортные данные
+
+      input(type="text" placeholder="серия документа")
+      input(type="text" placeholder="номер документа")
+      input(type="date" placeholder="дата выдачи")
+      input(type="text" placeholder="кем выдан")
+
+      h3 место работы
+
+      input(type="text" placeholder="наименование организации")
+      input(type="text" placeholder="должность")
+      select(size='1' name='orgonizeType')
+        option(value='на авто') ООО
+        option(selected='' value='на отдых') ОАО
+        option(value='На жильё') ИП
+      input(type="date" placeholder="дата заступления на должность")
+
+      h3 поручитель
+
+      input(type="text" placeholder="ФИО поручителя")
+      input(type="text" placeholder="e-mail")
+      input(type="text" placeholder="номер телефона")
+
+      input#sogl(type="checkbox", name="sogl")
+      input.btn(type="button", name="btn" value="расчитать")
 block footer
       script(src="/assets/vendor.js")
       script(src="/assets/app.js")

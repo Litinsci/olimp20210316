@@ -10,4 +10,20 @@ router.get('/', async function(req, res, next) {
   res.render('index',{userInfo:resulst});
 });
 
+router.post('/calc', async function(req, res, next) {
+  const {cred,sroc,aim} = req.body;
+  
+  let rate = await knex("credit").where('name', aim).select("interest_rate");
+  let plat = cred*(Number(rate[0].interest_rate)/100/12+(Number(rate[0].interest_rate)/100/12/((1+Number(rate[0].interest_rate)/100/12)*sroc-1)));
+  res.status(200).send({
+    status:200,
+    plat:Math.ceil(plat)
+  });
+});
+
+router.get('/user', async function(req, res , next) {
+  const{id} = req.body;
+  const [app] = await knex.select("*").from('application').where('id_user',id);
+  })
+
 module.exports = router;
